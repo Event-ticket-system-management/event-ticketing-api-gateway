@@ -196,7 +196,7 @@ class GatewaySecurityIntegrationTest extends GatewayTestSupport {
         respond(bookingBackend(), 200);
 
         client.patch()
-                .uri("/api/v1/bookings/123/cancel")
+                .uri("/api/v1/bookings/123/cancle")
                 .headers(h ->
                         h.setBearerAuth(valid("ROLE_USER"))
                 )
