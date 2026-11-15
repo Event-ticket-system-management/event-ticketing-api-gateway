@@ -1,9 +1,12 @@
 server:
-  port: ${SERVER_PORT:9090}
+  port: ${SERVER_PORT}
+  shutdown: graceful
 
 spring:
   application:
     name: api-gateway
+  lifecycle:
+    timeout-per-shutdown-phase: 20s
 
   cloud:
     gateway:
@@ -29,11 +32,11 @@ spring:
 
 services:
   user:
-    url: ${USER_SERVICE_URL:http://localhost:8081}
+    url: ${USER_SERVICE_URL}
   event:
-    url: ${EVENT_SERVICE_URL:http://localhost:8082}
+    url: ${EVENT_SERVICE_URL}
   booking:
-    url: ${BOOKING_SERVICE_URL:http://localhost:8083}
+    url: ${BOOKING_SERVICE_URL}
 
 jwt:
   secret: ${JWT_SECRET}
@@ -47,4 +50,4 @@ management:
   endpoint:
     health:
       probes:
-        enable: true
+        enabled: true
