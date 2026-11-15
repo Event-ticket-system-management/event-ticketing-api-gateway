@@ -1,6 +1,59 @@
+server:
+  port: 0
+  shutdown: graceful
+
+spring:
+  application:
+    name: api-gateway
+
+  lifecycle:
+    timeout-per-shutdown-phase: 20s
+
+  cloud:
+    gateway:
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins:
+              - "http://localhost:3000"
+              - "http://localhost:5173"
+            allowedMethods:
+              - GET
+              - POST
+              - PUT
+              - PATCH
+              - DELETE
+              - OPTIONS
+            allowedHeaders:
+              - "*"
+            allowCredentials: false
+
+      httpclient:
+        connect-timeout: 5000
+        response-timeout: 10s
+
+services:
+  user:
+    url: "http://localhost:8081"
+  event:
+    url: "http://localhost:8082"
+  booking:
+    url: "http://localhost:8083"
+
 jwt:
   secret: "MDEyMzQ1Njc4OWFiY2RlZjAxMjM0NTY3ODlhYmNkZWY="
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+
+  endpoint:
+    health:
+      probes:
+        enabled: true
+
 logging:
-    level:
-      org.springframework.security: TRACE
+  level:
+    org.springframework.security: TRACE
