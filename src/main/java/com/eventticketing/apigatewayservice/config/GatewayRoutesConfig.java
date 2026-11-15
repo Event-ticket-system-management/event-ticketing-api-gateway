@@ -24,7 +24,7 @@ public class GatewayRoutesConfig {
                         .path("/api/v1/events/**")
                         .uri(eventServiceUrl))
                 .route("booking-service", route -> route
-                        .path("/api/v1/booking/**")
+                        .path("/api/v1/bookings/**")
                         .uri(bookingServiceUrl))
                 .build();
     }
