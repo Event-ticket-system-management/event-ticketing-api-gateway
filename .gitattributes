@@ -9,3 +9,5 @@
 *.ico binary
 *.jar binary
 *.zip binary
+
+.env
