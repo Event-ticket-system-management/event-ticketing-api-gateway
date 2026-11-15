@@ -251,7 +251,7 @@ Payment Service routing is part of the overall system architecture and must be c
 | User Service | 8081 |
 | Event Service | 8082 |
 | Booking Service | 8083 |
-| Payment Service | Environment-dependent |
+| Payment Service | Event-Driven |
 
 All external API requests should be sent through the API Gateway.
 
